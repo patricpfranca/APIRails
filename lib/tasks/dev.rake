@@ -10,7 +10,6 @@ namespace :dev do
   		)
   	end
 
-
   	25.times do |i|
   		Product.create!(
   			brand: Faker::Commerce.department(2, true),
@@ -20,7 +19,19 @@ namespace :dev do
   			active: true,
   			category: Category.all.sample
   		)
+		end
+		
+		Product.all.each do |product|
+			Random.rand(5).times do |i|
+				stock = Stock.create!(
+					quantity: Faker::Number.between(1, 30),
+					quantity_minimum: 2,
+					location_street: Faker::Address.state_abbr,
+					location_block: Faker::Number.digit
+				)
+				product.stocks << stock
+				product.save
+			end
   	end
-  end
-
+	end
 end
