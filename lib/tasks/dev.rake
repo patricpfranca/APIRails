@@ -6,7 +6,7 @@ namespace :dev do
 
   	categories.each do |category|
   		Category.create!(
-  			description: category
+  			name: category
   		)
   	end
 

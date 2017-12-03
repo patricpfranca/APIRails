@@ -4,7 +4,7 @@ class CreateProducts < ActiveRecord::Migration[5.1]
       t.string :name
       t.string :brand
       t.string :description
-      t.boolean :active
+      t.boolean :active, default: true
       t.decimal :amount
 
       t.timestamps
